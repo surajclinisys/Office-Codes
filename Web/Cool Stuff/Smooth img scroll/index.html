@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+</head>
+<body>
+    <div class="image-track" data-mouse-down-at="0">
+        <img class="image" src="https://camillemormal.com/static/media/d/work/gucci/hero.jpg?8" draggable="false">
+        <img class="image" src="https://camillemormal.com/static/media/d/load/23.jpg?8" draggable="false">
+        <img class="image" src="https://camillemormal.com/static/media/d/load/17.jpg?8" draggable="false">
+        <img class="image" src="https://camillemormal.com/static/media/d/load/6.jpg?8" draggable="false">
+        <img class="image" src="https://camillemormal.com/static/media/d/load/0.jpg?8" draggable="false">
+        <img class="image" src="https://camillemormal.com/static/media/d/work/saeco/home.jpg?8" draggable="false">
+        <img class="image" src="https://camillemormal.com/static/media/d/work/samsung/home.jpg?8" draggable="false">
+    </div>
+    <script >
+        const track = document.getElementById("image-track"); 
+window.onmousedown = e =>{
+    track.dataset.mouseDownAt = e.clientX;
+}
+window.onmousedown = e =>{
+    if(track.dataset.mouseDownAt === "0") return;
+    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+    maxDelta  = window.innerWidth/2;
+    const percentage = (mouseDelta/maxDelta)*-100;
+    track.style.transform = `translate(${percentage}%,-50%)`;
+}
+    </script>
+</body>
+</html>
